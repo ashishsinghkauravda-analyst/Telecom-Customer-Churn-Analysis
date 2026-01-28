@@ -7,11 +7,11 @@ The analysis is performed using PostgreSQL (SQL) and visualized through Power BI
 
 ## Objectives
 
-Clean and prepare raw telecom customer data for analysis
-Identify factors contributing to customer churn
-Measure churn, retention, and revenue-at-risk KPIs
-Segment customers by tenure, contract, services, and payment methods
-Build executive-level and operational insights for churn reduction
+-Clean and prepare raw telecom customer data for analysis
+-Identify factors contributing to customer churn
+-Measure churn, retention, and revenue-at-risk KPIs
+-Segment customers by tenure, contract, services, and payment methods
+-Build executive-level and operational insights for churn reduction
 
  ## Dataset 
  
@@ -19,15 +19,15 @@ The data for this project is sourced from the Kaggle dataset: Dataset Link:https
 
 ## Data Cleaning 
 
-Removed blank values from TotalCharges
-Converted numeric fields to proper data types
-Standardized Yes/No values
-Normalized “No internet service” and “No phone service”
-Created a clean, Power BI–ready table
+-Removed blank values from TotalCharges
+-Converted numeric fields to proper data types
+-Standardized Yes/No values
+-Normalized “No internet service” and “No phone service”
 
 ## Business Problems & Solutions
  
 1️. What is the overall churn rate?
+```sql
 select round(100.0 * sum(case when churn='Yes' then 1 else 0 end)/count(*),2) as churn_rate
 from telecom_churn_clean;
 
@@ -84,12 +84,12 @@ where churn = 'Yes';
 
 # Findings
 
-Month-to-Month contracts show the highest churn
-Customers with tenure less than 1 year are most at risk
-Higher monthly charges are strongly linked to churn
-Customers without tech support churn significantly more
-Electronic Check payment users have the highest churn rate
-Fiber optic users churn more than DSL users
+-Month-to-Month contracts show the highest churn
+-Customers with tenure less than 1 year are most at risk
+-Higher monthly charges are strongly linked to churn
+-Customers without tech support churn significantly more
+-Electronic Check payment users have the highest churn rate
+-Fiber optic users churn more than DSL users
 
 # Conclusion
 
@@ -98,8 +98,8 @@ The analysis helps stakeholders understand why customers churn, where revenue is
 
  # Business Recommendations
 
-Encourage long-term contracts with discounts
-Improve onboarding during the first 90 days
-Bundle tech support with premium plans
-Target high-risk payment methods with incentives
-Focus retention strategies on high-value customers
+-Encourage long-term contracts with discounts
+-Improve onboarding during the first 90 days
+-Bundle tech support with premium plans
+-Target high-risk payment methods with incentives
+-Focus retention strategies on high-value customers
