@@ -26,29 +26,30 @@ The data for this project is sourced from the Kaggle dataset: Dataset Link:https
 
 ## Business Problems & Solutions
  
+```md
 ### 1️. What is the overall churn rate?
 ```sql
 select round(100.0 * sum(case when churn='Yes' then 1 else 0 end)/count(*),2) as churn_rate
-from telecom_churn_clean; ```sql
+from telecom_churn_clean; 
 
-2️. How many customers have churned?
-sql
-
+```md
+### 2️. How many customers have churned?
+```sql
 select count(*) as total_customers
 from telecom_churn_clean
 where churn='Yes';
 
-3️. Which contract type has the highest churn?
-sql
-
+```md
+### 3️. Which contract type has the highest churn?
+```sql
 select contract, count(*) as churned_customers
 from telecom_churn_clean
 where churn='Yes' group by contract
 order by churned_customers desc;
 
-4️. Does customer tenure impact churn?
-sql
-
+```md
+### 4️. Does customer tenure impact churn?
+```sql
 select
 case  when tenure < 12 then '0-1 Year'
 when tenure between 12 and 24 then '1-2 Years'
@@ -57,45 +58,45 @@ count(*) as churned_customers
 from telecom_churn_clean
 where churn='Yes' group by tenure_group;
 
-5️. Find if senior citizens are more likely to churn?
-sql
-
+```md
+### 5️. Find if senior citizens are more likely to churn?
+```sql
 select senior_citizen, count(*) as churned_customers
 from telecom_churn_clean
 where churn='Yes' group by senior_citizen;
 
-6️. Which payment method has the highest churn?
-sql
-
+```md
+### 6️. Which payment method has the highest churn?
+```sql
 select payment_method, count(*) as churned_customers
 from telecom_churn_clean
 where churn='Yes' group by payment_method
 order by churned_customers desc;
 
-7️. Find the average monthly charge of churned customers?
-sql
-
+```md
+### 7️. Find the average monthly charge of churned customers?
+```sql
 select round(avg(monthly_charges),2) as avg_monthly_charge
 from telecom_churn_clean
 where churn='Yes';
 
-8️. Find which internet service users churn the most?
-sql
-
+```md
+### 8️. Find which internet service users churn the most?
+```sql
 select internet_service, count(*) as churned_customers
 from telecom_churn_clean
 where churn='Yes' group by internet_service;
 
-9️. Does tech support reduce churn?
-sql
-
+```md
+### 9️. Does tech support reduce churn?
+```sql
 select tech_support, count(*) as churned_customers
 from telecom_churn_clean
 where churn='Yes' group by tech_support;
 
-10. Find the total monthly revenue lost due to churn?
-sql
-
+```md
+### 10. Find the total monthly revenue lost due to churn?
+```sql
 select round(sum(monthly_charges),2) as monthly_revenue_at_risk
 from telecom_churn_clean
 where churn = 'Yes';
