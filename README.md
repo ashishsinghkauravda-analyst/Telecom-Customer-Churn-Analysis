@@ -26,11 +26,10 @@ The data for this project is sourced from the Kaggle dataset: Dataset Link:https
 
 ## Business Problems & Solutions
  
-1️. What is the overall churn rate?
-sql
-
+### 1️. What is the overall churn rate?
+```sql
 select round(100.0 * sum(case when churn='Yes' then 1 else 0 end)/count(*),2) as churn_rate
-from telecom_churn_clean;
+from telecom_churn_clean; ```sql
 
 2️. How many customers have churned?
 sql
