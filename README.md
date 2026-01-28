@@ -1,37 +1,32 @@
  Telecom Customer Churn Analysis (SaaS Retention Project)
+
  Project Overview
 
 This project focuses on cleaning, analyzing, and visualizing telecom customer data to identify key churn drivers, revenue risk, and retention opportunities.
 The analysis is performed using PostgreSQL (SQL) and visualized through Power BI SaaS-style dashboards to support business decision-making.
 
-Project Objectives
+ Objectives
 
 Clean and prepare raw telecom customer data for analysis
-
 Identify factors contributing to customer churn
-
 Measure churn, retention, and revenue-at-risk KPIs
-
 Segment customers by tenure, contract, services, and payment methods
-
 Build executive-level and operational insights for churn reduction
 
  Dataset 
+ 
 The data for this project is sourced from the Kaggle dataset: Dataset Link:https://www.kaggle.com/datasets/blastchar/telco-customer-churn
 
-Data Cleaning Summary
+Data Cleaning 
 
 Removed blank values from TotalCharges
-
 Converted numeric fields to proper data types
-
 Standardized Yes/No values
-
 Normalized “No internet service” and “No phone service”
-
 Created a clean, Power BI–ready table
 
- Business Problems & Solutions (SQL Based)
+ Business Problems & Solutions
+ 
 1️. What is the overall churn rate?
 select round(100.0 * sum(case when churn='Yes' then 1 else 0 end)/count(*),2) as churn_rate
 from telecom_churn_clean;
@@ -56,7 +51,7 @@ count(*) as churned_customers
 from telecom_churn_clean
 where churn='Yes' group by tenure_group;
 
-5️. Are senior citizens more likely to churn?
+5️. Find if senior citizens are more likely to churn?
 select senior_citizen, count(*) as churned_customers
 from telecom_churn_clean
 where churn='Yes' group by senior_citizen;
@@ -67,12 +62,12 @@ from telecom_churn_clean
 where churn='Yes' group by payment_method
 order by churned_customers desc;
 
-7️. What is the average monthly charge of churned customers?
+7️. Find the average monthly charge of churned customers?
 select round(avg(monthly_charges),2) as avg_monthly_charge
 from telecom_churn_clean
 where churn='Yes';
 
-8️. Which internet service users churn the most?
+8️. Find which internet service users churn the most?
 select internet_service, count(*) as churned_customers
 from telecom_churn_clean
 where churn='Yes' group by internet_service;
@@ -90,15 +85,10 @@ where churn = 'Yes';
 Findings
 
 Month-to-Month contracts show the highest churn
-
 Customers with tenure less than 1 year are most at risk
-
 Higher monthly charges are strongly linked to churn
-
 Customers without tech support churn significantly more
-
 Electronic Check payment users have the highest churn rate
-
 Fiber optic users churn more than DSL users
 
 Conclusion
@@ -109,11 +99,7 @@ The analysis helps stakeholders understand why customers churn, where revenue is
  Business Recommendations
 
 Encourage long-term contracts with discounts
-
 Improve onboarding during the first 90 days
-
 Bundle tech support with premium plans
-
 Target high-risk payment methods with incentives
-
 Focus retention strategies on high-value customers
