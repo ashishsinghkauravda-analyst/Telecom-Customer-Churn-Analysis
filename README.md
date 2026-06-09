@@ -1,4 +1,4 @@
-# Telecom Customer Churn Analysis (SaaS Retention Project)
+# Telecom Customer Churn Analysis (Retention Project)
 
 ## Project Overview
 This project focuses on cleaning, analyzing, and visualizing telecom customer data to identify key churn drivers, revenue risk, and retention opportunities.
